@@ -14,9 +14,9 @@ func NetflixData(useCase string, jobName string, numberOfMapOutput int, path str
 
 	files := common.OpenFiles(column)
 	if useCase == "sequential" {
-		wordCountSequential(jobName, files, numberOfMapOutput, path, column)
+		netflixDataSequential(jobName, files, numberOfMapOutput, path, column)
 	} else if useCase == "distributed" {
-		wordCountDistributed(jobName, files, numberOfMapOutput, path, column)
+		netflixDataDistributed(jobName, files, numberOfMapOutput, path, column)
 	}
 	//common.Merge0rderByOccurrence(numberOfMapOutput, jobName)
 	common.MergeAlphabeticalOrder(numberOfMapOutput, jobName)
@@ -24,7 +24,7 @@ func NetflixData(useCase string, jobName string, numberOfMapOutput int, path str
 	//the test will only work with MergeAlphabeticalOrder
 	netflixDataTest(jobName)
 }
-func wordCountSequential(jobName string, files []string, numberOfMapOutput int, path string, column *string) {
+func netflixDataSequential(jobName string, files []string, numberOfMapOutput int, path string, column *string) {
 	start := time.Now()
 	for i, file := range files {
 		shuffleSort.DoMapSequential(jobName, i, file, numberOfMapOutput, netflixDataMapF, path, column)
@@ -43,7 +43,7 @@ func wordCountSequential(jobName string, files []string, numberOfMapOutput int, 
 
 }
 
-func wordCountDistributed(jobName string, files []string, numberOfMapOutput int, path string, column *string) {
+func netflixDataDistributed(jobName string, files []string, numberOfMapOutput int, path string, column *string) {
 }
 func netflixDataTest(jobName string) {
 	resultName := strings.Split(jobName, "-")
