@@ -16,8 +16,8 @@ func Ii(useCase string, jobName string, numberOfMapOutput int, path string, colu
 	files := common.OpenFiles(nil)
 	if useCase == "sequential" {
 		iiSequential(jobName, files, numberOfMapOutput, path)
-	} else if useCase == "distributed" {
-		iiDistributed(jobName, files, numberOfMapOutput, path)
+	} else if useCase == "concurrent" {
+		iiConcurrent(jobName, files, numberOfMapOutput, path)
 	}
 	common.MergeAlphabeticalOrder(numberOfMapOutput, jobName)
 	iiTest(jobName, len(files))
@@ -43,7 +43,7 @@ func iiSequential(jobName string, files []string, numberOfMapOutput int, path st
 }
 
 //TODO
-func iiDistributed(jobName string, files []string, numberOfMapOutput int, path string) {
+func iiConcurrent(jobName string, files []string, numberOfMapOutput int, path string) {
 }
 func iiTest(jobName string, numberOfFiles int) {
 	resultName := strings.Split(jobName, "-")

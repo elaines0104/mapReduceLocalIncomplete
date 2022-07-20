@@ -15,8 +15,8 @@ func NetflixData(useCase string, jobName string, numberOfMapOutput int, path str
 	files := common.OpenFiles(column)
 	if useCase == "sequential" {
 		netflixDataSequential(jobName, files, numberOfMapOutput, path, column)
-	} else if useCase == "distributed" {
-		netflixDataDistributed(jobName, files, numberOfMapOutput, path, column)
+	} else if useCase == "concurrent" {
+		netflixDataConcurrent(jobName, files, numberOfMapOutput, path, column)
 	}
 	//common.Merge0rderByOccurrence(numberOfMapOutput, jobName)
 	common.MergeAlphabeticalOrder(numberOfMapOutput, jobName)
@@ -43,7 +43,7 @@ func netflixDataSequential(jobName string, files []string, numberOfMapOutput int
 
 }
 
-func netflixDataDistributed(jobName string, files []string, numberOfMapOutput int, path string, column *string) {
+func netflixDataConcurrent(jobName string, files []string, numberOfMapOutput int, path string, column *string) {
 }
 func netflixDataTest(jobName string) {
 	resultName := strings.Split(jobName, "-")

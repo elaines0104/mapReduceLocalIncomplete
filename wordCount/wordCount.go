@@ -16,8 +16,8 @@ func WordCount(useCase string, jobName string, numberOfMapOutput int, path strin
 	jobName = jobName + "-WordCount"
 	if useCase == "sequential" {
 		wordCountSequential(jobName, files, numberOfMapOutput, path)
-	} else if useCase == "distributed" {
-		wordCountDistributed(jobName, files, numberOfMapOutput, path)
+	} else if useCase == "concurrent" {
+		wordCountConcurrent(jobName, files, numberOfMapOutput, path)
 	}
 	//common.Merge0rderByOccurrence(numberOfMapOutput, jobName)
 
@@ -46,7 +46,7 @@ func wordCountSequential(jobName string, files []string, numberOfMapOutput int, 
 }
 
 //TODO
-func wordCountDistributed(jobName string, files []string, numberOfMapOutput int, path string) {
+func wordCountConcurrent(jobName string, files []string, numberOfMapOutput int, path string) {
 }
 
 func wordCountTest(jobName string, numberOfFiles int) {

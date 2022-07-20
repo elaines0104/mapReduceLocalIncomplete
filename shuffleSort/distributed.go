@@ -11,12 +11,12 @@ func ihash(s string) uint32 {
 	return h.Sum32()
 }
 
-/** TODO: DoMapDistributed and DoReduceDistributed
+/** TODO: DoMapConcurrent and DoReduceConcurrent
 * You will use goroutines to distribute the tasks(you can use channels or waitgroups)
 * and use DoMapSequential and DoReduceSequential as a base to this functions
 *
  */
-func DoMapDistributed(jobName string,
+func DoMapConcurrent(jobName string,
 	files []string,
 	numberOfMapOutput int,
 	mapF func(file string, contents string) []common.KeyValue,
@@ -24,7 +24,7 @@ func DoMapDistributed(jobName string,
 	column *string) {
 }
 
-func DoReduceDistributed(
+func DoReduceConcurrent(
 	jobName string,
 	numberOfMapOutput int,
 	numberOfFiles int,
